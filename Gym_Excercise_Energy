@@ -1,1 +1,18 @@
 
+def min_exercises(E, N, A):
+    A.sort(reverse=True)  # Sort the array in descending order
+    total_exercises = 0
+    
+    for i in range(N):
+        for j in range(2):  # Each exercise can be performed at most twice
+            E -= A[i]
+            total_exercises += 1
+            if E <= 0:
+                return total_exercises
+    
+    return -1  # If energy level never drops to 0 or below
+
+# Case 3 Input
+print(min_exercises(6, 2, [1, 2]))  # Output: 4
+print(min_exercises(10, 2, [1, 2]))  # Output: -1
+print(min_exercises(2, 3, [1, 5, 2]))  # Output: 1
